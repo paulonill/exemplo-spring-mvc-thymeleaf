@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+ xmlns:th="http://www.thymeleaf.org"
+ xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+<meta charset="UTF-8"/>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta name="viewport" content="width=device-width" />
+
+<link th:href="@{/webjars/bootstrap/4.0.0/css/bootstrap.min.css}" rel="stylesheet" media="screen" />
+
+</head>
+<body>
+
+<header layout:insert="cabecalho">
+	Cabeçalho
+</header>
+
+<br />
+
+<section layout:fragment="conteudo">
+	Conteudo
+</section>
+
+<br />
+
+<footer class="card-footer text-muted text-center">
+	<p>Spring MVC</p>
+</footer>
+
+</body>
+</html>

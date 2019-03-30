@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>Pagina de erro</title>
+        <meta charset="utf-8" />
+        <link th:href="@{/webjars/bootstrap/4.0.0/css/bootstrap.min.css}" rel="stylesheet" media="screen" />
+    </head>
+    <body th:with="httpStatus=${T(org.springframework.http.HttpStatus).valueOf(#response.status)}">
+        <h1>Erro ao realizar a operação!</h1>
+        <p th:utext="${errorMessage}">Erro</p>
+        <a href="index.html" th:href="@{/produtos}">Voltar</a>
+    </body>
+</html>

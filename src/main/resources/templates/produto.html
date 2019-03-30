@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+ xmlns:th="http://www.thymeleaf.org"
+ xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+ layout:decorator="layoutPadrao">
+<head>
+<meta charset="UTF-8"/>
+<title>Cadastro de Produto</title>
+
+</head>
+<section layout:fragment="conteudo">
+
+<h4>Cadastro de Produto</h4>
+
+<div class="container">
+
+<br />
+<br />
+
+<form class="container" action="/produtos" method="POST" th:object="${produto}">
+
+<div layout:insert="mensagemErro"></div>
+
+<div layout:insert="mensagemGeral"></div>
+
+<br />
+
+<input type="hidden" th:field="*{id}" />
+
+<div class="form-group">
+<label for="nome">Nome:</label>
+<input class="form-control" type="text" th:field="*{nome}" />
+</div>
+
+<div class="form-group">
+<label for="valor">Valor:</label>
+<input class="form-control" type="text" th:field="*{valor}"/>
+</div>
+
+<div class="form-group">
+<label for="dataDeCadastro">Data de Cadastro</label>
+<input class="form-control" type="text" th:field="*{dataCadastro}" />
+</div>
+
+<div class="form-group">
+<label for="statusProduto">Status do produto</label>
+<select class="custom-select" th:field="*{statusProduto}"> 
+	<option th:each="statusProduto : ${todosStatusProduto}" 
+	  th:text="${statusProduto.descricao}" 
+	  th:value="${statusProduto}"></option>
+</select>
+</div>
+
+<button class="btn btn-primary" type="submit">Salvar</button>
+
+</form>
+
+</div>
+
+</section>
+</html>
