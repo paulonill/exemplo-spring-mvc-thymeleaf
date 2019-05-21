@@ -1,27 +1,24 @@
 package br.com.pjr.exemplospringbootthymeleaf.entidade;
 
-import java.math.BigDecimal;
-import java.util.Date;
-
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
-import javax.validation.constraints.NotNull;
-
-import org.springframework.format.annotation.DateTimeFormat;
-import org.springframework.format.annotation.NumberFormat;
-
 import br.com.pjr.exemplospringbootthymeleaf.entidade.type.StatusProduto;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.format.annotation.NumberFormat;
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Column;
+import javax.persistence.Enumerated;
+import javax.persistence.EnumType;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+import java.math.BigDecimal;
+import java.time.LocalDate;
 
 @Entity
 @Data
@@ -34,7 +31,7 @@ public class Produto {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
-	@NotNull(message = "O campo nome não pode ser vazio!")
+	@NotBlank(message = "O campo nome não pode ser vazio!")
 	@Column(nullable = false, unique = true)
 	private String nome;
 
@@ -43,10 +40,9 @@ public class Produto {
 	@NotNull(message = "O campo valor não pode ser vazio!")
 	private BigDecimal valor;
 
-	@Temporal(TemporalType.DATE)
-	@DateTimeFormat(pattern = "dd/MM/yyyy")
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	@NotNull(message = "O campo data não pode ser vazio!")
-	private Date dataCadastro;
+	private LocalDate dataCadastro;
 
 	@Enumerated(EnumType.STRING)
 	private StatusProduto statusProduto;

@@ -1,50 +1,50 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:th="http://www.thymeleaf.org"
-	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
- layout:decorator="layoutPadrao">
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layoutPadrao}">
 <head>
-<meta charset="UTF-8" />
-	<title>Lista de produtos</title>
+    <meta charset="UTF-8"/>
+    <title>Lista de produtos</title>
 </head>
 <section layout:fragment="conteudo">
-	<h4>Lista de produtos</h4>
+    <h4>Lista de produtos</h4>
 
-<div class="container">
-	<br />
-	<br />
-	
-	<table class="table">
+    <div class="container">
+        <br/>
+        <br/>
 
-		<thead>
-			<tr>
-				<th>Id</th>
-				<th>Nome</th>
-				<th>Valor</th>
-				<th>Data de Cadastro</th>
-				<th>Status do Produto</th>
-				<th>Operação</th>
-			</tr>
-		</thead>
-		<tbody>
-			<tr th:each="produto : ${produtos}">
-				<td th:text="${produto.id}"></td>
-				<td th:text="${produto.nome}"></td>
-				<td th:text="|R$ ${{produto.valor}}|"></td>
-				<td th:text="${{produto.dataCadastro}}"></td>
-				<td th:text="${produto.StatusProduto.descricao}"></td>
-				<td>
-					<a class="btn btn-primary" th:href="@{/produtos/editar/{id}(id=${produto.id})}">Editar</a>
-					<a class="btn btn-danger" th:href="@{/produtos/excluir/{id}(id=${produto.id})}"
-					onclick="return confirm('Confirma a exclusão ?')">Excluir</a>
-				</td>
-			</tr>
-			<tr>
-				<td colspan="5" th:if="${#lists.isEmpty(produtos)}" >Nenhum produto cadastrado!</td>
-			</tr>
-		</tbody>
+        <table class="table">
 
-	</table>
-</div>
+            <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nome</th>
+                <th>Valor</th>
+                <th>Data de Cadastro</th>
+                <th>Status do Produto</th>
+                <th>Operação</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="produto : ${produtos}">
+                <td th:text="${produto.id}"></td>
+                <td th:text="${produto.nome}"></td>
+                <td th:text="|R$ ${{produto.valor}}|"></td>
+                <td th:text="${#temporals.format(produto.dataCadastro,'dd/MM/yyyy')}"></td>
+                <td th:text="${produto.StatusProduto.descricao}"></td>
+                <td>
+                    <a class="btn btn-primary" th:href="@{/produtos/editar/{id}(id=${produto.id})}">Editar</a>
+                    <a class="btn btn-danger" th:href="@{/produtos/excluir/{id}(id=${produto.id})}"
+                       onclick="return confirm('Confirma a exclusão ?')">Excluir</a>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="5" th:if="${#lists.isEmpty(produtos)}">Nenhum produto cadastrado!</td>
+            </tr>
+            </tbody>
+
+        </table>
+    </div>
 </section>
 </html>
