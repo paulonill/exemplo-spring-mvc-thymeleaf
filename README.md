@@ -1,4 +1,4 @@
-# Projeto exemplo - Spring MVC com 
+# Projeto exemplo - Spring MVC com Thymeleaf
 
 ### Requerimentos/Conhecimentos e Tecnologias utilizadas
 * JDK 8   
@@ -14,4 +14,4 @@
 * Maven 3.5.2+
 
 ### Aplicação:
-* http://localhost:8080/produtos
+* http://localhost:8080/
