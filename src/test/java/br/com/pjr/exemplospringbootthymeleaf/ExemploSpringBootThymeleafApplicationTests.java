@@ -11,7 +11,6 @@ public class ExemploSpringBootThymeleafApplicationTests {
 
 	@Test
 	public void contextLoads() {
-	  assert(false);
 	}
 
 }
